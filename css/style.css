@@ -1,0 +1,26 @@
+.hide  {
+  display: none;
+} 
+.accordion-menu {
+  margin: 0 auto;
+  width:50%;
+  list-style: none;
+}
+.accordion-menu-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 2px solid #a5a5a5;
+  max-height: 10px;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+.accordion-menu-item:hover {
+  background: #dcdcdc;
+}
+.accordion-menu-item div {
+  text-align: center;
+} 
+.active {
+  max-height: 100px;
+  overflow: auto;
+}
