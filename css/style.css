@@ -1,23 +1,20 @@
-.hide  {
-  display: none;
-} 
-.accordion-menu {
+.list {
+  font-size: 18px;
   margin: 0 auto;
   width:50%;
-  list-style: none;
 }
-.accordion-menu-item {
+.accordion-item {
   padding: 10px 20px;
   cursor: pointer;
-  border-bottom: 2px solid #a5a5a5;
+  border-bottom: 2px solid red;
   max-height: 10px;
   overflow: hidden;
   transition: max-height 0.5s ease-out;
 }
-.accordion-menu-item:hover {
+.accordion-item:hover {
   background: #dcdcdc;
 }
-.accordion-menu-item div {
+.accordion-item .body {
   text-align: center;
 } 
 .active {

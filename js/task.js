@@ -1,54 +1,27 @@
 class Accordion {
     constructor(container) {
         this.container = container;
-        this.currentItem = null;
-        this.listItems = [];
 
-        this.init();
-        this.createUlMenu();
+        this.addClass();
         this.createEventToogleListener();
         this.removeClassActive(this.currentItem);
     }
 
-    init() {
-        const list = this.container.querySelector('.list');
-        list.classList.add('hide');
-        const listItems = this.container.querySelectorAll('.list-item');
-        this.listItems = listItems;
-    }
-    createUlMenu() {
-            
-        const accordionMenuLists = Array.from(this.listItems).map(item => {
+    addClass() {
+        const divList = this.container.firstElementChild;
+        const listItems = divList.children;
 
-            const titleName = item.querySelector('.title').textContent;
-            const bodyName = item.querySelector('.body').textContent;
-            
-            const accordionMenuLi = document.createElement('li');
-            accordionMenuLi.className = 'accordion-menu-item';
-
-            const accordionMenuDiv = document.createElement('div');
-            accordionMenuDiv.className = '.body';
-
-            accordionMenuLi.textContent = titleName;
-            accordionMenuDiv.textContent = bodyName;
-            
-            accordionMenuLi.append(accordionMenuDiv);
-            return accordionMenuLi;
+        Array.from(listItems).map(item => {
+            item.classList.add('accordion-item');
         });
-
-        const ulAccordionMenu = document.createElement('ul');
-        ulAccordionMenu.className = 'accordion-menu';
-
-        ulAccordionMenu.append(...accordionMenuLists);
-        this.container.prepend(ulAccordionMenu);
     }
 
     createEventToogleListener() {
 
-    const accordionMenuLists = this.container.querySelectorAll('.accordion-menu-item');
-            
+    const accordionMenuLists = this.container.querySelectorAll('.accordion-item');
+
         this.container.addEventListener("click", (event) => {
-           if (event.target.classList.contains('accordion-menu-item')) {
+           if (event.target.classList.contains('accordion-item')) {
               const menuItem =  event.target;
                menuItem.classList.toggle('active');
                 
@@ -57,12 +30,12 @@ class Accordion {
         });
     }  
 
-    removeClassActive(tabMenuItemId) {
+    removeClassActive(MenuItem) {
 
-        const accordionHeaders = this.container.querySelectorAll('.accordion-menu-item');
+        const accordionHeaders = this.container.querySelectorAll('.accordion-item');
 
         Array.from(accordionHeaders).forEach(item => {
-            if (item != tabMenuItemId) {
+            if (item != MenuItem) {
                 item.classList.remove('active');
             }
         });
@@ -71,6 +44,3 @@ class Accordion {
 
 new Accordion(document.getElementById("container"));
 
-// 2) мы к html доступа не имеем?
-// 1) нужно ли вытягивать из базис листа текст из боди и тайтла?
-// 3) проверка на валидность?
