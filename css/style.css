@@ -1,23 +1,58 @@
+#container { 
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: linear-gradient(270deg, #003366, #b27000, #06617d, #067370);
+  background-size: 800% 800%;
+  -webkit-animation: colors 30s ease infinite;
+  -moz-animation: colors 30s ease infinite;
+  animation: colors 30s ease infinite;
+}
 .list {
   font-size: 18px;
-  margin: 0 auto;
-  width:50%;
+   -webkit-box-shadow: 0px 13px 23px -13px rgba(0,0,0,0.5);
+   width: 600px;
+   background-color: transparent;
+   margin: auto;
+   margin-top: 50px;
 }
-.accordion-item {
-  padding: 10px 20px;
-  cursor: pointer;
-  border-bottom: 2px solid red;
+.accordion {
+  padding:  12px;
+  border-bottom: 2px solid #ccc;
   max-height: 10px;
   overflow: hidden;
   transition: max-height 0.5s ease-out;
+  
 }
-.accordion-item:hover {
-  background: #dcdcdc;
+.accordion:hover {
+  cursor: pointer;
+  background-color: rgba(0,0,0, .5);
 }
-.accordion-item .body {
+
+.accordion .body {
   text-align: center;
 } 
 .active {
   max-height: 100px;
   overflow: auto;
+}
+.title {
+  color: #fff;
+  font-size: 24px;
+  font-family: Monoton;
+}
+@-webkit-keyframes colors {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-moz-keyframes colors {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes colors { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }

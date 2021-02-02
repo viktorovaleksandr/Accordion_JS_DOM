@@ -1,41 +1,35 @@
 class Accordion {
     constructor(container) {
         this.container = container;
+        this.accordion = {};
 
-        this.addClass();
-        this.createEventToogleListener();
-        this.removeClassActive(this.currentItem);
+        this.accordionAddClass();
+        this.createEventToogleAccordion();
+        this.removeClassActive(this.accordionItem);
     }
+    accordionAddClass() {
+        const list = this.container.querySelector('.list');
+        this.accordion = list.children;
 
-    addClass() {
-        const divList = this.container.firstElementChild;
-        const listItems = divList.children;
-
-        Array.from(listItems).map(item => {
-            item.classList.add('accordion-item');
+        Array.from(this.accordion).map(item => {
+            item.classList.add('accordion');
         });
     }
-
-    createEventToogleListener() {
-
-    const accordionMenuLists = this.container.querySelectorAll('.accordion-item');
-
+    createEventToogleAccordion() {
         this.container.addEventListener("click", (event) => {
-           if (event.target.classList.contains('accordion-item')) {
-              const menuItem =  event.target;
-               menuItem.classList.toggle('active');
+                    
+           if (event.target.classList.contains('accordion')) {
+                const accordionItem =  event.target;
+                accordionItem.classList.toggle('active');
                 
-                this.removeClassActive(menuItem);       
+                this.removeClassActive(accordionItem);       
            } 
-        });
+        });               
     }  
-
-    removeClassActive(MenuItem) {
-
-        const accordionHeaders = this.container.querySelectorAll('.accordion-item');
-
-        Array.from(accordionHeaders).forEach(item => {
-            if (item != MenuItem) {
+    removeClassActive(accordionItem) {
+            
+        Array.from(this.accordion).forEach(item => {
+            if (item != accordionItem) {
                 item.classList.remove('active');
             }
         });
