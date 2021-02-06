@@ -3,35 +3,34 @@ class Accordion {
         this.container = container;
 
         this.accordionAddClass();
-        this.createEventToogleTitle();
-        this.removeClassActive(this.accordionTitleClick);
+        this.addTitleClickEventListener();
+        this.removeActiveClasses(this.accordionItemBody);
     }
     accordionAddClass() {
         const list = this.container.querySelector('.list');
-        this.accordionCollection = list.children;
 
-        Array.from(this.accordionCollection).map(accordion => {
+        Array.from(list).map(accordion => {
             accordion.classList.add('accordion');
         });
     }
-    createEventToogleTitle() {
+    addTitleClickEventListener() {
         const titles = this.container.querySelectorAll('.title');
         
         titles.forEach(title => {
             title.addEventListener("click", (event) => {
                 
-                const accordionTitleClick = event.target.nextElementSibling;
-                accordionTitleClick.classList.toggle('active');
+                const accordionItemBody = event.target.nextElementSibling;
+                accordionItemBody.classList.toggle('active');
                 
-                this.removeClassActive(accordionTitleClick);        
+                this.removeActiveClasses(accordionItemBody);        
             });  
         });                
     }  
-    removeClassActive(accordionTitle) {
+    removeActiveClasses(accordionItemBody) {
         const accordionBodies = this.container.querySelectorAll('.body');
           
             accordionBodies.forEach(body => {
-                if (body != accordionTitle) 
+                if (body !== accordionItemBody) 
                 body.classList.remove('active');    
             });
         }
